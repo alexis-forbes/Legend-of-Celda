@@ -9,8 +9,7 @@ public class CameraFollow : MonoBehaviour
     private Vector3 targetPosition; //con la posición que toque
     public float cameraSpeed; //gobernar la velocidad de la camara
 
-
-
+   
 
     // Start is called before the first frame update
     void Start()

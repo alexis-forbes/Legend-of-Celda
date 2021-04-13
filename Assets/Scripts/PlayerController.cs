@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static bool playerCreated; //para el dontdestroyonload
 
     public float speed = 5.0f; //Ahora que tenemos el speed, le preguntamos en el update al axis a ver si se ha movido en H o en V. 
     private const string AXIS_H = "Horizontal" , AXIS_V = "Vertical", WALK = "Walking", LAST_H = "LastH", LAST_V = "LastV";
@@ -14,8 +15,7 @@ public class PlayerController : MonoBehaviour
     
 
     private Animator _animator; //componente privada del propio objeto así que va con una underscore "_"
-
-
+    private Rigidbody2D _rigidbody;
 
 
 
@@ -24,12 +24,9 @@ public class PlayerController : MonoBehaviour
     {
 
         _animator = GetComponent<Animator>();
+        _rigidbody = GetComponent<Rigidbody2D>();
 
-
-
-
-
-
+        playerCreated = true; 
 
 
     }
@@ -42,8 +39,10 @@ public class PlayerController : MonoBehaviour
         //Espacio = velocidad * tiempo
         if (Mathf.Abs(Input.GetAxisRaw(AXIS_H)) > 0.2f)
         {
-            Vector3 translation = new Vector3(Input.GetAxisRaw(AXIS_H) * speed * Time.deltaTime, 0, 0);
-            this.transform.Translate(translation);
+            // Vector3 translation = new Vector3(Input.GetAxisRaw(AXIS_H) * speed * Time.deltaTime, 0, 0);
+            // this.transform.Translate(translation);
+            _rigidbody.velocity = new Vector2(Input.GetAxisRaw(AXIS_H) * this.speed, _rigidbody.velocity.y);
+            //que siga el rigid el movimiento de las H, la y no cambia.
             this.walking = true;
             lastMovement = new Vector2(Input.GetAxisRaw(AXIS_H), 0); //inicializamos el vector 2 donde en el ejece de las X llamamos al lasth y ponemos el Y a 0. Save Lastmovement knonw.
         }
@@ -51,8 +50,9 @@ public class PlayerController : MonoBehaviour
 
         if (Mathf.Abs(Input.GetAxisRaw(AXIS_V)) > 0.2f)
         {
-            Vector3 translation = new Vector3(0, Input.GetAxisRaw(AXIS_V) * speed * Time.deltaTime, 0);
-            this.transform.Translate(translation);
+            // Vector3 translation = new Vector3(0, Input.GetAxisRaw(AXIS_V) * speed * Time.deltaTime, 0);
+            // this.transform.Translate(translation);
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, Input.GetAxisRaw(AXIS_V) * this.speed); //right now the player is skying through the playground
             this.walking = true;
             lastMovement = new Vector2(0, Input.GetAxisRaw(AXIS_V)); 
         }
@@ -61,6 +61,15 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()  // responsable último después de haber movido las teclas
     {
+        //stopping player from skying
+
+        if (!walking)
+        {
+            _rigidbody.velocity = Vector2.zero; 
+        }
+
+
+
 
         _animator.SetFloat("Horizontal", Input.GetAxisRaw(AXIS_H)); //lo que mueve horizontalmente en el hardware (joystick or keys) se lo traduzco al idioma que habla la animación "horizontal". 
         _animator.SetFloat("Vertical", Input.GetAxisRaw(AXIS_V));
