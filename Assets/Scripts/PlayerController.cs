@@ -12,12 +12,12 @@ public class PlayerController : MonoBehaviour
     private bool walking = false; 
     public Vector2 lastMovement = Vector2.zero;
 
-    
+  
 
     private Animator _animator; //componente privada del propio objeto así que va con una underscore "_"
     private Rigidbody2D _rigidbody;
 
-
+    public string nextUuid; 
 
     // Start is called before the first frame update
     void Start()
