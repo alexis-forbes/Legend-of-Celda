@@ -7,9 +7,10 @@ public class PlayerController : MonoBehaviour
     public static bool playerCreated; //para el dontdestroyonload
 
     public float speed = 5.0f; //Ahora que tenemos el speed, le preguntamos en el update al axis a ver si se ha movido en H o en V. 
-    private const string AXIS_H = "Horizontal" , AXIS_V = "Vertical", WALK = "Walking", LAST_H = "LastH", LAST_V = "LastV";
+    private const string AXIS_H = "Horizontal" , AXIS_V = "Vertical", WALK = "Walking", ATT = "Attacking", LAST_H = "LastH", LAST_V = "LastV";
 
-    private bool walking = false; 
+    private bool walking = false;
+    private bool attacking = false; 
     public Vector2 lastMovement = Vector2.zero;
 
   
@@ -17,7 +18,13 @@ public class PlayerController : MonoBehaviour
     private Animator _animator; //componente privada del propio objeto así que va con una underscore "_"
     private Rigidbody2D _rigidbody;
 
-    public string nextUuid; 
+    public string nextUuid;
+
+    public float attackTime;
+    private float attackTimeCounter;
+
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -31,10 +38,39 @@ public class PlayerController : MonoBehaviour
 
     }
 
+
+
+
+
     // Update is called once per frame
     void Update()
     {
         this.walking = false; //this para enfatizar que es una variable de esta propia clase
+
+        if (attacking) //si ya estamos atacando no hay que comprobar si el boton esta pulsado
+        {
+            attackTimeCounter -= Time.deltaTime; //le descuento el tiempo de frame
+            if(attackTimeCounter < 0) //cuando llegue a 0
+            {
+                attacking = false; //paro el ataque
+                _animator.SetBool(ATT, false); //paro el animador y pongo atacar en false
+            }
+        }
+        else if (Input.GetMouseButtonDown(0))
+        {
+            attacking = true;
+            attackTimeCounter = attackTime;
+            _rigidbody.velocity = Vector2.zero;
+            _animator.SetBool(ATT, true);
+        }
+        //Atacar tiene que prevalecer sobre el movimiento
+
+
+
+
+
+
+
 
         //Espacio = velocidad * tiempo
         if (Mathf.Abs(Input.GetAxisRaw(AXIS_H)) > 0.2f)
