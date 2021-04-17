@@ -6,7 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     public static bool playerCreated; //para el dontdestroyonload
 
-    public float speed = 5.0f; //Ahora que tenemos el speed, le preguntamos en el update al axis a ver si se ha movido en H o en V. 
+    public float speed = 5.0f; //Ahora que tenemos el speed, le preguntamos en el update al axis a ver si se ha movido en H o en V.
+  
     private const string AXIS_H = "Horizontal" , AXIS_V = "Vertical", WALK = "Walking", ATT = "Attacking", LAST_H = "LastH", LAST_V = "LastV";
 
     private bool walking = false;
@@ -77,7 +78,7 @@ public class PlayerController : MonoBehaviour
         {
             // Vector3 translation = new Vector3(Input.GetAxisRaw(AXIS_H) * speed * Time.deltaTime, 0, 0);
             // this.transform.Translate(translation);
-            _rigidbody.velocity = new Vector2(Input.GetAxisRaw(AXIS_H) * this.speed, _rigidbody.velocity.y);
+            _rigidbody.velocity = new Vector2(Input.GetAxisRaw(AXIS_H), _rigidbody.velocity.y).normalized * speed;
             //que siga el rigid el movimiento de las H, la y no cambia.
             this.walking = true;
             lastMovement = new Vector2(Input.GetAxisRaw(AXIS_H), 0); //inicializamos el vector 2 donde en el ejece de las X llamamos al lasth y ponemos el Y a 0. Save Lastmovement knonw.
@@ -88,10 +89,12 @@ public class PlayerController : MonoBehaviour
         {
             // Vector3 translation = new Vector3(0, Input.GetAxisRaw(AXIS_V) * speed * Time.deltaTime, 0);
             // this.transform.Translate(translation);
-            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, Input.GetAxisRaw(AXIS_V) * this.speed); //right now the player is skying through the playground
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, Input.GetAxisRaw(AXIS_V)).normalized * speed; //right now the player is skying through the playground
             this.walking = true;
             lastMovement = new Vector2(0, Input.GetAxisRaw(AXIS_V)); 
         }
+
+        
 
     }
 
