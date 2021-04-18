@@ -9,6 +9,26 @@ public class HealthManager : MonoBehaviour
     [SerializeField]
     private int currentHealth;
 
+    public int Health
+    {
+        get
+        {
+            return currentHealth; 
+        }
+        
+    }
+
+
+    public bool flashActive; //var to know if enemy is flashing
+    public float flashLength;
+    public float flashCounter;
+
+    private SpriteRenderer _characterRenderer; //we will tint sprite or make it invisible. Its a reference
+                                               //component of the character thats why it has "_" at the begining
+
+
+
+
 
 
 
@@ -18,19 +38,8 @@ public class HealthManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _characterRenderer = GetComponent<SpriteRenderer>(); //initializing the spriterenderer
         UpdateMaxHealth(maxHealth);
-
-
-
-
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-
 
 
 
@@ -47,6 +56,13 @@ public class HealthManager : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+        if(flashLength > 0)
+        {
+            GetComponent<BoxCollider2D>().enabled = false;
+            GetComponent<PlayerController>().canMove = false; 
+            flashActive = true;
+            flashCounter = flashLength; //start the flashcounter
+        }
     }
 
     public void UpdateMaxHealth(int newMaxHealth)
@@ -54,5 +70,52 @@ public class HealthManager : MonoBehaviour
         maxHealth = newMaxHealth;
         currentHealth = maxHealth;
     }
+
+
+    void ToggleColor(bool visible)
+    {
+        _characterRenderer.color = new Color(_characterRenderer.color.r, _characterRenderer.color.g, _characterRenderer.color.b, (visible ? 1.0f : 0.0f)); //ternary operator of the bool visible parameter
+        //keep the character's colors
+    }
+
+
+
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (flashActive)
+        {
+            flashCounter -= Time.deltaTime;
+            if(flashCounter > flashLength * 0.66f) //si aun no ha paso el 33% de la animacion, es que es el primer frame
+            {
+                ToggleColor(false); //invisible
+            }
+            else if (flashCounter > flashLength*0.33f) //ha pasado entre un 33 y un 66% total de la animacion
+            {
+                ToggleColor(true); //activamos personaje 
+            }else if (flashCounter > 0) //si ha pasado entre un 66 y un 99% de la animacion
+            {
+                ToggleColor(false); //personaje no visible y parpadeando
+            }
+            else // sin tiempo de animacion
+            {
+                ToggleColor(true); //personaje visible
+                flashActive = false; //fuera flashing
+                GetComponent<BoxCollider2D>().enabled = true;
+                GetComponent<PlayerController>().canMove = false;
+
+            }
+        }
+
+
+
+
+
+
+    }
+
+
+   
 
 }

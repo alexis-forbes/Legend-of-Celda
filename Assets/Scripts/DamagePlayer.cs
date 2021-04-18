@@ -10,8 +10,10 @@ public class DamagePlayer : MonoBehaviour
     private bool playerReviving;
     */
 
-    /*
-    public int damage; 
+    
+    public int damage;
+    public GameObject canvasDamage; 
+
 
     private GameObject thePlayer; //referenciamos el objeto a revivir dentro de la colision
 
@@ -19,13 +21,15 @@ public class DamagePlayer : MonoBehaviour
     {
         if (collision.gameObject.name.Equals("Player")) //if collision against Player exists
         {
-            collision.gameObject.GetComponent<HealthManager>().DamageCharacter(damage); 
+            var clone = (GameObject)Instantiate(canvasDamage, collision.gameObject.transform.position, Quaternion.Euler(Vector3.zero)); //instantiate and display damage number
+            clone.GetComponent<DamageNumber>().damagePoints = damage; //ask component DamageNumber and indicate that damagePoints = damage the enemy does
+            collision.gameObject.GetComponent<HealthManager>().DamageCharacter(damage); // & take damage
         }
     }
 
 
 
-
+    /*
     // Update is called once per frame
     void Update()
     {

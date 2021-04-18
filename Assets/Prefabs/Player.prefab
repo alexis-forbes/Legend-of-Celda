@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f614e7e8f82934dc7b7377e6e2f63335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 1
   speed: 5
   lastMovement: {x: 0, y: 0}
   nextUuid: 
@@ -229,6 +230,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 200
   currentHealth: 100
+  flashActive: 0
+  flashLength: 1.5
+  flashCounter: 0
 --- !u!1 &6204808147530688229
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,7 +503,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1015131050819491115, guid: 60d60b94ae50b40f0a0c2d952c4bebeb, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7310245632835288986, guid: 60d60b94ae50b40f0a0c2d952c4bebeb, type: 3}
       propertyPath: damage
@@ -573,7 +577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6770832539368476826, guid: 67c5afed53cc649769f0922404bc9956, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7863378367892754781, guid: 67c5afed53cc649769f0922404bc9956, type: 3}
       propertyPath: m_LocalPosition.x

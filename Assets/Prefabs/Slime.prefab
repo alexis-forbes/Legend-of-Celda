@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &3619566776494032768
+--- !u!114 &1343683855
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,13 +9,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 4214795274466328330}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2970bd2b26b5f43ee8471caae047c323, type: 3}
+  m_Script: {fileID: 11500000, guid: 8909f103756024564aafa9175ac3049a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  timeBetweenSteps: 0.5
-  timeToMakeStep: 1
-  directionToMove: {x: 0, y: 0}
+  damage: 10
+  canvasDamage: {fileID: 0}
+--- !u!114 &1343683862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4214795274466328330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd0105f2a39f451d8ad11ae91854545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 150
+  currentHealth: 0
+  flashActive: 0
+  flashLength: 0
+  flashCounter: 0
 --- !u!1001 &6102516268442576686
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29,11 +44,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5925984617574299729, guid: b8ab485d6a39a4d108943f3b23256eb1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.25771707
+      value: 26.336683
       objectReference: {fileID: 0}
     - target: {fileID: 5925984617574299729, guid: b8ab485d6a39a4d108943f3b23256eb1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.3121326
+      value: -17.87
       objectReference: {fileID: 0}
     - target: {fileID: 5925984617574299729, guid: b8ab485d6a39a4d108943f3b23256eb1, type: 3}
       propertyPath: m_LocalPosition.z

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public bool canMove = true;
+
     public static bool playerCreated; //para el dontdestroyonload
 
     public float speed = 5.0f; //Ahora que tenemos el speed, le preguntamos en el update al axis a ver si se ha movido en H o en V.
@@ -46,7 +48,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         this.walking = false; //this para enfatizar que es una variable de esta propia clase
+        //walking is false so character will stop walking
+        if (!canMove) //how it doesnt move it stops
+        {
+            return;
+        }
+
 
         if (attacking) //si ya estamos atacando no hay que comprobar si el boton esta pulsado
         {
