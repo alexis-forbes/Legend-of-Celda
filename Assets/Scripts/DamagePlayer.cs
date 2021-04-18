@@ -12,18 +12,43 @@ public class DamagePlayer : MonoBehaviour
 
     
     public int damage;
-    public GameObject canvasDamage; 
+    public GameObject canvasDamage;
 
+    private CharacterStats stats; 
 
     private GameObject thePlayer; //referenciamos el objeto a revivir dentro de la colision
+
+
+
+    private void Start()
+    {
+        stats = GameObject.Find("Player").GetComponent<CharacterStats>(); 
+    }
+
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name.Equals("Player")) //if collision against Player exists
         {
+            int totalDamage = damage * (1- stats.defenseLevels[stats.level]/CharacterStats.MAX_STAT_VAL); //making account of defenseLevels
+            totalDamage = Mathf.Clamp(totalDamage, 1, CharacterStats.MAX_HEALTH);
+
+           
+            if(Random.Range(0, CharacterStats.MAX_STAT_VAL) < stats.luckLevels[stats.level]) //if missProb is higher than the range then there is a miss
+            {
+                totalDamage = 0; 
+            }
+            /*
+            if(totaldamage <0)
+            {
+                totaldamage = 0; 
+            }
+            */
+
             var clone = (GameObject)Instantiate(canvasDamage, collision.gameObject.transform.position, Quaternion.Euler(Vector3.zero)); //instantiate and display damage number
-            clone.GetComponent<DamageNumber>().damagePoints = damage; //ask component DamageNumber and indicate that damagePoints = damage the enemy does
-            collision.gameObject.GetComponent<HealthManager>().DamageCharacter(damage); // & take damage
+            clone.GetComponent<DamageNumber>().damagePoints = totalDamage; //ask component DamageNumber and indicate that damagePoints = damage the enemy does
+            collision.gameObject.GetComponent<HealthManager>().DamageCharacter(totalDamage); // & take damage
         }
     }
 

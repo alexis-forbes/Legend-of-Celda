@@ -21,12 +21,13 @@ public class HealthManager : MonoBehaviour
 
     public bool flashActive; //var to know if enemy is flashing
     public float flashLength;
-    public float flashCounter;
+    private float flashCounter;
 
     private SpriteRenderer _characterRenderer; //we will tint sprite or make it invisible. Its a reference
                                                //component of the character thats why it has "_" at the begining
 
 
+    public int expWhenDefeated;
 
 
 
@@ -56,15 +57,24 @@ public class HealthManager : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-        if(flashLength > 0)
+        if (gameObject.tag.Equals("Enemy"))
+        {
+            GameObject.Find("Player").GetComponent<CharacterStats>().AddExperience(expWhenDefeated);
+            //if the object destroyed is the enemy
+            //get player and get component CharacterStats
+            //call get experience with the amount of experience to add when enemy defeated
+        }
+
+        if (flashLength > 0)
         {
             GetComponent<BoxCollider2D>().enabled = false;
-            GetComponent<PlayerController>().canMove = false; 
+            GetComponent<PlayerController>().canMove = false;
+         
             flashActive = true;
             flashCounter = flashLength; //start the flashcounter
         }
-    }
 
+    }
     public void UpdateMaxHealth(int newMaxHealth)
     {
         maxHealth = newMaxHealth;
@@ -82,7 +92,7 @@ public class HealthManager : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (flashActive)
         {
@@ -103,7 +113,7 @@ public class HealthManager : MonoBehaviour
                 ToggleColor(true); //personaje visible
                 flashActive = false; //fuera flashing
                 GetComponent<BoxCollider2D>().enabled = true;
-                GetComponent<PlayerController>().canMove = false;
+                GetComponent<PlayerController>().canMove = true;
 
             }
         }
