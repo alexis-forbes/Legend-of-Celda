@@ -23,10 +23,22 @@ public class WeaponDamage : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Enemy"))
         {
-            int totalDamage = damage * (1+ stats.strengthLevels[stats.level]/CharacterStats.MAX_STAT_VAL); //hacemos daño con el arma + nivel del jugador
+            CharacterStats enemyStats = collision.gameObject.GetComponent<CharacterStats>();
+
+            float plaFac = (1 + stats.strengthLevels[stats.level] / CharacterStats.MAX_STAT_VAL); 
+            float eneFac = (1 - enemyStats.defenseLevels[enemyStats.level] / CharacterStats.MAX_STAT_VAL); 
+
+            int totalDamage = (int)(damage * eneFac * plaFac); //hacemos daño con el arma + nivel del jugador
             if(Random.Range(0, CharacterStats.MAX_STAT_VAL) > stats.accuracyLevels[stats.level]) //if accuracy is higher than the range, then there is a miss it in lower in time
             {
-                totalDamage = 0; 
+                if (Random.Range(0, CharacterStats.MAX_STAT_VAL) < enemyStats.luckLevels[enemyStats.level])
+                {
+                    totalDamage = 0; //luck of enemy and maincharacter, the enemy will stop the critical damage
+                }
+                else
+                {
+                totalDamage *= 5; //critical damage because of my luck
+                }
             }
 
             if(bloodAnim != null && hitPoint !=null)

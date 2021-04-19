@@ -47,6 +47,8 @@ GameObject:
   - component: {fileID: 2020830356372703224}
   - component: {fileID: 5332120096212976298}
   - component: {fileID: 66786609372317045}
+  - component: {fileID: 5600172514537427285}
+  - component: {fileID: 269266282}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -231,8 +233,50 @@ MonoBehaviour:
   maxHealth: 200
   currentHealth: 100
   flashActive: 0
-  flashLength: 1.5
-  flashCounter: 0
+  flashLength: 1
+  expWhenDefeated: 0
+--- !u!114 &5600172514537427285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020830356372703231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f620d69dad264785820311f842bbe70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 0
+  exp: 0
+  expToLevelUp: 
+  hpLevels: 6400000096000000d20000000e0100004f0100009a010000f401000058020000b202000007030000
+  strengthLevels: 00000000010000000200000005000000080000000c0000000d000000120000001400000016000000
+  defenseLevels: 000000000100000002000000030000000500000007000000090000000c0000000f00000014000000
+  speedLevels: 000000000100000002000000030000000500000007000000090000000c0000000f00000014000000
+  luckLevels: 00000000010000000a00000004000000070000000a0000000f000000120000001e00000016000000
+  accuracyLevels: 3200000032000000340000003500000035000000370000003a0000003c0000003e00000040000000
+--- !u!114 &269266282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020830356372703231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f620d69dad264785820311f842bbe70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 1
+  exp: 0
+  expToLevelUp: 000000000a000000140000003200000064000000fa000000e8030000240900008813000010270000
+  hpLevels: 6400000096000000d20000000e0100004f0100009a010000f401000058020000b202000007030000
+  strengthLevels: 00000000010000000200000005000000080000000c0000000d000000120000001400000016000000
+  defenseLevels: 000000000100000002000000030000000500000007000000090000000c0000000f00000014000000
+  speedLevels: 000000000100000002000000060000000700000008000000090000000c0000000d0000000e000000
+  luckLevels: 00000000010000000a00000004000000070000000a0000000f000000120000001e00000016000000
+  accuracyLevels: 3200000035000000340000003500000035000000370000003a0000003c0000003e00000040000000
 --- !u!1 &6204808147530688229
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,6 +548,14 @@ PrefabInstance:
     - target: {fileID: 1015131050819491115, guid: 60d60b94ae50b40f0a0c2d952c4bebeb, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1604968873199478251, guid: 60d60b94ae50b40f0a0c2d952c4bebeb, type: 3}
+      propertyPath: m_Size.y
+      value: 0.4832859
+      objectReference: {fileID: 0}
+    - target: {fileID: 1604968873199478251, guid: 60d60b94ae50b40f0a0c2d952c4bebeb, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.3715124
       objectReference: {fileID: 0}
     - target: {fileID: 7310245632835288986, guid: 60d60b94ae50b40f0a0c2d952c4bebeb, type: 3}
       propertyPath: damage

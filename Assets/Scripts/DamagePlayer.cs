@@ -14,7 +14,8 @@ public class DamagePlayer : MonoBehaviour
     public int damage;
     public GameObject canvasDamage;
 
-    private CharacterStats stats; 
+    private CharacterStats playerStats;
+    private CharacterStats _stats; //enemy
 
     private GameObject thePlayer; //referenciamos el objeto a revivir dentro de la colision
 
@@ -22,7 +23,8 @@ public class DamagePlayer : MonoBehaviour
 
     private void Start()
     {
-        stats = GameObject.Find("Player").GetComponent<CharacterStats>(); 
+        playerStats = GameObject.Find("Player").GetComponent<CharacterStats>();
+        _stats = GetComponent<CharacterStats>(); 
     }
 
 
@@ -31,13 +33,21 @@ public class DamagePlayer : MonoBehaviour
     {
         if (collision.gameObject.name.Equals("Player")) //if collision against Player exists
         {
-            int totalDamage = damage * (1- stats.defenseLevels[stats.level]/CharacterStats.MAX_STAT_VAL); //making account of defenseLevels
-            totalDamage = Mathf.Clamp(totalDamage, 1, CharacterStats.MAX_HEALTH);
+            float strFac = 1 + _stats.strengthLevels[_stats.level]/CharacterStats.MAX_STAT_VAL; //enemy damage is modified because of its damage(strength)
+            float plaFac = 1 - playerStats.defenseLevels[playerStats.level] /CharacterStats.MAX_STAT_VAL; //also by the player's defense
+
+
+            int totalDamage = Mathf.Clamp((int)(damage * strFac * plaFac), 1, CharacterStats.MAX_HEALTH); //making account of defenseLevels
+           
 
            
-            if(Random.Range(0, CharacterStats.MAX_STAT_VAL) < stats.luckLevels[stats.level]) //if missProb is higher than the range then there is a miss
+            if(Random.Range(0, CharacterStats.MAX_STAT_VAL) < playerStats.luckLevels[playerStats.level]) //if missProb is higher than the range then there is a miss
             {
-                totalDamage = 0; 
+                if(Random.Range(0, CharacterStats.MAX_STAT_VAL) > _stats.accuracyLevels[_stats.level]) //enemy will fail or hit depending on the accuracy and luck
+                {
+                    totalDamage = 0; //if luck or accury doesnt apply
+                }
+                
             }
             /*
             if(totaldamage <0)

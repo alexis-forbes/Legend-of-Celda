@@ -34,13 +34,18 @@ public class CharacterStats : MonoBehaviour
     void Start()
     {
         healthManager = GetComponent<HealthManager>();
-        playerController = GetComponent<PlayerController>(); 
+        playerController = GetComponent<PlayerController>();
 
+        healthManager.UpdateMaxHealth(hpLevels[level]); //updates enemy and character's hp levels depending on the level
 
-        
+        if (gameObject.tag.Equals("Enemy"))
+        {
+            EnemyController controller = GetComponent<EnemyController>();
+            controller.speed += speedLevels[level] / CharacterStats.MAX_HEALTH; 
+        }
     }
 
-    
+
 
     public void AddExperience(int exp) //method addexperience with parameter of exp
     {

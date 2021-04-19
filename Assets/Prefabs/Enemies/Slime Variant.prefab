@@ -79,6 +79,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7619879835390704378, guid: b8ab485d6a39a4d108943f3b23256eb1, type: 3}
+      propertyPath: level
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7984191432065849380, guid: b8ab485d6a39a4d108943f3b23256eb1, type: 3}
       propertyPath: m_Name
       value: Slime Variant
