@@ -22,15 +22,10 @@ public class WeaponManager : MonoBehaviour
             weapons.Add(weapon.gameObject); //creating a loop in transform we obtain the children of the GameObject specified
         }
 
-        /* for(int i = 0; i< weapons.Count; i++) //if the [i] of the loop coincides with  ActiveWeapon, it has to be active, if not innactive
+        for(int i = 0; i< weapons.Count; i++) //if the [i] of the loop coincides with  ActiveWeapon, it has to be active, if not innactive
          {
-             weapons[i].SetActive(i == activeWeapon); 
+             weapons[i].SetActive(false); 
          }
-
-         */
-
-
-
 
     }
 

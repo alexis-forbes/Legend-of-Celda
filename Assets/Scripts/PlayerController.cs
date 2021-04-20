@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
 {
     public bool canMove = true;
 
+    public bool isTalking; 
+
     public static bool playerCreated; //para el dontdestroyonload
 
     public float speed = 5.0f; //Ahora que tenemos el speed, le preguntamos en el update al axis a ver si se ha movido en H o en V.
@@ -40,8 +42,9 @@ public class PlayerController : MonoBehaviour
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
 
-        playerCreated = true; 
+        playerCreated = true;
 
+        isTalking = false; 
 
     }
 
@@ -52,6 +55,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isTalking)
+        {
+            _rigidbody.velocity = Vector2.zero;
+            return; 
+        }
+
+
+
 
         this.walking = false; //this para enfatizar que es una variable de esta propia clase
         //walking is false so character will stop walking

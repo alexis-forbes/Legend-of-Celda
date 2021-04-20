@@ -249,8 +249,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 0
   exp: 0
-  expToLevelUp: 
-  hpLevels: 6400000096000000d20000000e0100004f0100009a010000f401000058020000b202000007030000
+  expToLevelUp: 000000000a00000019000000320000005a0000009600000022010000f401000084030000983a0000a8610000
+  hpLevels: 6400000096000000d20000000e0100004f0100009a010000f401000058020000b20200000703000084030000
   strengthLevels: 00000000010000000200000005000000080000000c0000000d000000120000001400000016000000
   defenseLevels: 000000000100000002000000030000000500000007000000090000000c0000000f00000014000000
   speedLevels: 000000000100000002000000030000000500000007000000090000000c0000000f00000014000000
@@ -286,6 +286,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6283403951917895012}
+  - component: {fileID: 1313302259}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -310,6 +311,19 @@ Transform:
   m_Father: {fileID: 2020830356372703229}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1313302259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6204808147530688229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742e93d8a13a34f0a9f5c0bb992f9495, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeWeapon: 0
 --- !u!1001 &2614826671222653092
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -371,7 +385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6515427903238417170, guid: 48de32dc5432b4e4a9b0c75826e681da, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48de32dc5432b4e4a9b0c75826e681da, type: 3}
@@ -629,7 +643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6770832539368476826, guid: 67c5afed53cc649769f0922404bc9956, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7863378367892754781, guid: 67c5afed53cc649769f0922404bc9956, type: 3}
       propertyPath: m_LocalPosition.x
