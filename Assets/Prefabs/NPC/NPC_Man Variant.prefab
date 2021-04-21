@@ -7,6 +7,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 471713753, guid: 67557a8b948224dff950201127fb9355, type: 3}
+      propertyPath: npcName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 471713753, guid: 67557a8b948224dff950201127fb9355, type: 3}
+      propertyPath: npcSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 471713753, guid: 67557a8b948224dff950201127fb9355, type: 3}
+      propertyPath: npcDialogueLines.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1313201411460024528, guid: 67557a8b948224dff950201127fb9355, type: 3}
       propertyPath: speed
       value: 0.5
@@ -73,7 +85,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1313201411460024543, guid: 67557a8b948224dff950201127fb9355, type: 3}
       propertyPath: m_Name
-      value: NPC_Man
+      value: NPC_Man Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67557a8b948224dff950201127fb9355, type: 3}
