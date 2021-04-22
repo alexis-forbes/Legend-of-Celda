@@ -18,10 +18,10 @@ public class QuestManager : MonoBehaviour
     void Start()
     {
 
-        dialogueMananger = FindObjectOfType<DialogueMananger>(); 
+        dialogueMananger = FindObjectOfType<DialogueManager>(); 
         foreach(Transform t in transform) //runs through all the children of the manager
         {
-            quests.Add(t.gameObject.getComponent<Quest>()); //get the children (quests) of QuestManager
+            quests.Add(t.gameObject.GetComponent<Quest>()); //get the children (quests) of QuestManager
         }
 
 
@@ -47,6 +47,20 @@ public class QuestManager : MonoBehaviour
     }
 
 
-
+    public Quest QuestWithID(int questID) //loop of all missions and foreach one we check if the temporary quest == questID in parameter. 
+    {
+        Quest q = null;
+        foreach(Quest temp in quests)
+        {
+            if(temp.questID == questID)
+            {
+                q = temp; //q is assinged to the temp quest
+            }
+        }
+        return q; //we found the quest or it is null
+    }
+    
+   
+          
 
 }
