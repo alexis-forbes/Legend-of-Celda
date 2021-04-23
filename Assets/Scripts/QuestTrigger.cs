@@ -30,6 +30,7 @@ public class QuestTrigger : MonoBehaviour
         if (collision.gameObject.name.Equals("Player"))
         {
             playerInZone = true;
+            
         }
 
     }

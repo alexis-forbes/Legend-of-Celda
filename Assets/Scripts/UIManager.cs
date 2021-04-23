@@ -14,20 +14,24 @@ public class UIManager : MonoBehaviour
 
     public HealthManager playerHealthManager;
     public CharacterStats playerStats;
-    private WeaponManager weaponManager; 
+    private WeaponManager weaponManager;
+    private ItemsManager itemsManager; 
+
+
+
+
+
 
 
     private void Start()
     {
-        weaponManager = FindObjectOfType<WeaponManager>(); 
+        weaponManager = FindObjectOfType<WeaponManager>();
+        itemsManager = FindObjectOfType<ItemsManager>();
+
         inventoryPanel.SetActive(false);
         menuPanel.SetActive(false); 
 
     }
-
-
-
-
 
 
 
@@ -93,15 +97,17 @@ public class UIManager : MonoBehaviour
         int i = 0; 
         foreach (GameObject w in weapons)
         {
-            Button tempB = Instantiate(inventoryButton, inventoryPanel.transform);
-            tempB.GetComponent<InventoryButton>().type = InventoryButton.ItemType.WEAPON;
-            tempB.GetComponent<InventoryButton>().itemIdx = i; 
-            tempB.onClick.AddListener(() => tempB.GetComponent<InventoryButton>().ActivateButton());   //adds a delegate to the button responding with the manager changing weapon in determine position
-            //translate weapon image to the button image
-            tempB.image.sprite = w.GetComponent<SpriteRenderer>().sprite;
+            AddItemToInventory(w, InventoryButton.ItemType.WEAPON, i);
             i++; 
         }
 
+
+        i = 0; //obligated because of position indexing in InventoryM
+        List<GameObject> keyItems = itemsManager.GetQuestItems();
+        foreach(GameObject item in keyItems)
+        {
+            AddItemToInventory(item, InventoryButton.ItemType.SPECIAL_ITEMS, i); 
+        }
     }
 
 
@@ -113,6 +119,17 @@ public class UIManager : MonoBehaviour
         }
     }
 
+
+    public void AddItemToInventory(GameObject item, InventoryButton.ItemType type, int pos)
+    {
+        Button tempB = Instantiate(inventoryButton, inventoryPanel.transform);
+        tempB.GetComponent<InventoryButton>().type = type;
+        tempB.GetComponent<InventoryButton>().itemIdx = pos;
+        tempB.onClick.AddListener(() => tempB.GetComponent<InventoryButton>().ActivateButton());   //adds a delegate to the button responding with the manager changing weapon in determine position
+                                                                                                   //translate weapon image to the button image
+        tempB.image.sprite = item.GetComponent<SpriteRenderer>().sprite;
+        
+    }
 
     public void ShowAll() //show all elements in inventory
     {

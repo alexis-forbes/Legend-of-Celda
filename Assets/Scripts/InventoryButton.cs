@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class InventoryButton : MonoBehaviour
 {
-    public enum ItemType { WEAPON = 0, ITEM = 1, ARMOR = 2, RING = 3}; 
+    public enum ItemType { WEAPON = 0, ITEM = 1, ARMOR = 2, RING = 3, SPECIAL_ITEMS = 4}; 
     public int itemIdx; //itemindex
     public ItemType type; 
 
@@ -27,6 +27,10 @@ public void ActivateButton()
                 break;
             case ItemType.RING:
                 Debug.Log("Por solo 9,99€...");
+                break;
+            case ItemType.SPECIAL_ITEMS:
+                QuestItem item = FindObjectOfType<ItemsManager>().GetItemAt(itemIdx); 
+                Debug.Log(item.itemName);
                 break; 
         }
 

@@ -12,7 +12,9 @@ public class QuestManager : MonoBehaviour
 
     private DialogueManager dialogueMananger; //reference to the DialogueManager
 
+    public QuestItem itemCollected;
 
+    public QuestEnemy enemyKilled; 
 
     // Start is called before the first frame update
     void Start()
@@ -30,16 +32,6 @@ public class QuestManager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-
-
-
-
-
-    }
 
     public void ShowQuestText(string questText)
     {
@@ -60,7 +52,9 @@ public class QuestManager : MonoBehaviour
         return q; //we found the quest or it is null
     }
     
-   
+
+
+    
           
 
 }

@@ -30,7 +30,8 @@ public class HealthManager : MonoBehaviour
     public int expWhenDefeated;
 
 
-
+    private QuestEnemy quest;
+    private QuestManager questManager; 
 
 
 
@@ -43,7 +44,8 @@ public class HealthManager : MonoBehaviour
         UpdateMaxHealth(maxHealth);
 
 
-
+        quest = GetComponent<QuestEnemy>();
+        questManager = FindObjectOfType<QuestManager>(); 
 
 
     }
@@ -63,6 +65,8 @@ public class HealthManager : MonoBehaviour
             //if the object destroyed is the enemy
             //get player and get component CharacterStats
             //call get experience with the amount of experience to add when enemy defeated
+
+            questManager.enemyKilled = quest; 
         }
 
         if (flashLength > 0)

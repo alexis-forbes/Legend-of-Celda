@@ -17,6 +17,9 @@ GameObject:
   - component: {fileID: 6099244797473397651}
   - component: {fileID: 1343683862}
   - component: {fileID: 7619879835390704378}
+  - component: {fileID: 4506512807481677573}
+  - component: {fileID: 1993619521}
+  - component: {fileID: 1575977108430121650}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Enemy
@@ -79,7 +82,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 297761703447499198, guid: f82bac9e73b6141c3bd859aac88ae43d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4995495, g: 1, b: 0.4198113, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -136,7 +139,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 5.92
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -157,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2970bd2b26b5f43ee8471caae047c323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 3
   timeBetweenSteps: 0.5
   timeToMakeStep: 1
   directionToMove: {x: 0, y: 0}
@@ -173,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8909f103756024564aafa9175ac3049a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 30
   canvasDamage: {fileID: 5656233280142541953, guid: b79e7a0c134a54d48ba0a4eba9742006, type: 3}
 --- !u!114 &1343683862
 MonoBehaviour:
@@ -187,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fd0105f2a39f451d8ad11ae91854545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 15
+  maxHealth: 50
   currentHealth: 0
   flashActive: 0
   flashLength: 0
@@ -204,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f620d69dad264785820311f842bbe70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 0
+  level: 2
   exp: 0
   expToLevelUp: 
   hpLevels: 0a0000001400000032000000
@@ -213,3 +216,45 @@ MonoBehaviour:
   speedLevels: 000000000a00000014000000
   luckLevels: 00000000050000000a000000
   accuracyLevels: 05000000080000000a000000
+--- !u!114 &4506512807481677573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7984191432065849380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d6ce75c97ffe481082230a3aa2c88e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyName: Red Slime!
+--- !u!114 &1993619521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7984191432065849380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2970bd2b26b5f43ee8471caae047c323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  timeBetweenSteps: 0.5
+  timeToMakeStep: 1
+  directionToMove: {x: 0, y: 0}
+--- !u!114 &1575977108430121650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7984191432065849380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d6ce75c97ffe481082230a3aa2c88e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyName: Green Slime!
