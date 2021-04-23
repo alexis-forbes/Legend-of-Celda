@@ -34,6 +34,12 @@ public class GoToNewPlace : MonoBehaviour
         {
             if(!needsClick || (needsClick && Input.GetMouseButtonDown(0)))
             {
+                if (needsClick)
+                {
+                    SFXManager.SharedInstance.PlaySFK(SFXType.SoundType.KNOCK); 
+                }
+
+
                 FindObjectOfType<PlayerController>().nextUuid = uuid;
                 //si no necesito click, cargo escena o se cumple lo demas (o necesito click y he pulsado el botón necesario
                 //do: load the new scene

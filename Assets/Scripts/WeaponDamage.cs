@@ -7,11 +7,20 @@ public class WeaponDamage : MonoBehaviour
     [Tooltip("Cantidad de daño que hará la espalda")]
     public int damage;
 
+
+    public string weaponName; 
+
+
     public GameObject bloodAnim;
     public GameObject canvasDamage; 
     private GameObject hitPoint;
 
-    private CharacterStats stats; 
+    private CharacterStats stats;
+
+
+
+
+
 
     private void Start()
     {

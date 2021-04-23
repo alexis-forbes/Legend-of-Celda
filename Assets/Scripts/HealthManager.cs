@@ -15,6 +15,18 @@ public class HealthManager : MonoBehaviour
         {
             return currentHealth; 
         }
+
+        set //no one will be able to get more life than what it is stablished
+        {
+            if(value < 0)
+            {
+                currentHealth = 0;
+            }
+            else
+            {
+                currentHealth = value; 
+            }
+        }
         
     }
 
@@ -54,11 +66,14 @@ public class HealthManager : MonoBehaviour
     public void DamageCharacter(int damage)
     { //destroy character if damaged and health <=0
 
-        currentHealth -= damage;
-        if (currentHealth <= 0)
+        SFXManager.SharedInstance.PlaySFK(SFXType.SoundType.HIT);
+
+        Health -= damage;
+
+        if (Health <= 0)
         {
-            gameObject.SetActive(false);
-        }
+            // gameObject.SetActive(false);
+        
         if (gameObject.tag.Equals("Enemy"))
         {
             GameObject.Find("Player").GetComponent<CharacterStats>().AddExperience(expWhenDefeated);
@@ -69,6 +84,12 @@ public class HealthManager : MonoBehaviour
             questManager.enemyKilled = quest; 
         }
 
+            if (gameObject.name.Equals("Player")) //enemy died
+            {
+                SFXManager.SharedInstance.PlaySFK(SFXType.SoundType.DIE); 
+            }
+
+        }
         if (flashLength > 0)
         {
             GetComponent<BoxCollider2D>().enabled = false;
@@ -82,7 +103,7 @@ public class HealthManager : MonoBehaviour
     public void UpdateMaxHealth(int newMaxHealth)
     {
         maxHealth = newMaxHealth;
-        currentHealth = maxHealth;
+        Health = maxHealth;
     }
 
 

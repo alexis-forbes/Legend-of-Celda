@@ -55,6 +55,8 @@ public class Quest : MonoBehaviour
 
     public void StartQuest() //start quest
     {
+        SFXManager.SharedInstance.PlaySFK(SFXType.SoundType.M_START); 
+
         questManager = FindObjectOfType<QuestManager>(); //necessary to activate and initialize the quest
         questManager.ShowQuestText(title + "\n" + startText); //notify quest manager of the needs of the quest
 
@@ -103,6 +105,9 @@ public class Quest : MonoBehaviour
 
     public void CompleteQuest() //end quest
     {
+        SFXManager.SharedInstance.PlaySFK(SFXType.SoundType.M_END); 
+
+
         questManager = FindObjectOfType<QuestManager>(); //necessary to activate and initialize the quest
         questManager.ShowQuestText(title + "\n" + completeText); 
         questCompleted = true;

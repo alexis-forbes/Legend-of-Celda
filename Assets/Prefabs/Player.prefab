@@ -1,5 +1,48 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &165591569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 165591570}
+  - component: {fileID: 165591571}
+  m_Layer: 0
+  m_Name: Inventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &165591570
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165591569}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2020830356372703229}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &165591571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165591569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f7dbb9fee82143798ecde6899a17adf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &169818431
 GameObject:
   m_ObjectHideFlags: 0
@@ -69,6 +112,7 @@ Transform:
   m_Children:
   - {fileID: 6283403951917895012}
   - {fileID: 169818432}
+  - {fileID: 165591570}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -136,6 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
+  isTalking: 0
   speed: 5
   lastMovement: {x: 0, y: 0}
   nextUuid: 
@@ -199,7 +244,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -334,6 +379,10 @@ PrefabInstance:
     - target: {fileID: 3534831805127344547, guid: 48de32dc5432b4e4a9b0c75826e681da, type: 3}
       propertyPath: damage
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534831805127344547, guid: 48de32dc5432b4e4a9b0c75826e681da, type: 3}
+      propertyPath: weaponName
+      value: Butcker's axe
       objectReference: {fileID: 0}
     - target: {fileID: 6113545726968167416, guid: 48de32dc5432b4e4a9b0c75826e681da, type: 3}
       propertyPath: m_RootOrder
@@ -575,6 +624,10 @@ PrefabInstance:
       propertyPath: damage
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7310245632835288986, guid: 60d60b94ae50b40f0a0c2d952c4bebeb, type: 3}
+      propertyPath: weaponName
+      value: Daddy's Sword
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60d60b94ae50b40f0a0c2d952c4bebeb, type: 3}
 --- !u!4 &4137059226147521071 stripped
@@ -592,6 +645,10 @@ PrefabInstance:
     - target: {fileID: 3932655907524655659, guid: 67c5afed53cc649769f0922404bc9956, type: 3}
       propertyPath: damage
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932655907524655659, guid: 67c5afed53cc649769f0922404bc9956, type: 3}
+      propertyPath: weaponName
+      value: Stolen Knife
       objectReference: {fileID: 0}
     - target: {fileID: 6001620486332350576, guid: 67c5afed53cc649769f0922404bc9956, type: 3}
       propertyPath: m_RootOrder

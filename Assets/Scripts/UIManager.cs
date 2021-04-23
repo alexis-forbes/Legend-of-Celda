@@ -75,10 +75,11 @@ public class UIManager : MonoBehaviour
 
     public GameObject inventoryPanel, menuPanel;
     public Button inventoryButton;
-   
+    public Text inventoryText;
 
     public void Toggleinventory()
     {
+        inventoryText.text = ""; //weapon description text always empty
         inventoryPanel.SetActive(!inventoryPanel.activeInHierarchy); //if its visible make it invisible and VS
         menuPanel.SetActive(!menuPanel.activeInHierarchy); //if menuPanel is visible make it invisible and VS
         if (inventoryPanel.activeInHierarchy)
